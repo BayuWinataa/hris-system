@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏢 HRIS - Employee Management System
 
-## Getting Started
+Sistem Informasi Sumber Daya Manusia (**Human Resource Information System / HRIS**) modern yang dibangun untuk mengelola data karyawan, presensi/kehadiran, pengajuan cuti, penggajian (payroll), pengumuman internal, serta analitik HR secara efisien dan terintegrasi.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Fitur Utama
+
+### 👥 1. Manajemen Karyawan (Employee Management)
+- Kelola data karyawan lengkap (Nama, Email, Jabatan, Departemen, Status Kerja, No. Telepon, Foto Profil).
+- Fitur role-based access control ( **ADMIN** & **EMPLOYEE** ).
+- Status pekerjaan yang fleksibel (*Tetap, Kontrak, Magang*).
+- Upload foto profil karyawan menggunakan **UploadThing**.
+
+### 🏢 2. Manajemen Departemen (Department Management)
+- Pengelompokan karyawan berdasarkan divisi/departemen perusahaan.
+- Monitoring jumlah anggota di setiap departemen.
+
+### ⏱️ 3. Presensi & Pengaturan Jam Kerja (Attendance & Schedule)
+- Fitur **Clock-in / Clock-out** presensi harian secara real-time.
+- Pencatatan otomatis status kehadiran (*Hadir, Terlambat, Alfa*).
+- Pengaturan batas jam kerja dan toleransi keterlambatan (*Late Tolerance*).
+- Ekspor rekapitulasi presensi ke format **Excel (.xlsx)**.
+
+### 🏖️ 4. Manajemen Cuti & Izin (Leave Management)
+- Karyawan dapat mengajukan permohonan cuti dengan alasan dan rentang tanggal.
+- Admin dapat meninjau, menyetujui, atau menolak permohonan cuti (*Pending, Disetujui, Ditolak*).
+- Ekspor data riwayat cuti ke format **Excel**.
+
+### 💰 5. Penggajian (Payroll System)
+- Perhitungan slip gaji bulanan (Gaji Pokok, Tunjangan, Potongan, & Gaji Bersih / *Net Salary*).
+- Pengelolaan status pembayaran gaji (*Draft / Paid*).
+- Generasi slip gaji digital interaktif.
+
+### 📢 6. Pengumuman Internal (Announcements)
+- Publikasi pengumuman penting perusahaan kepada seluruh staf/karyawan.
+
+### 📊 7. HR Analytics & Dashboard Interactive
+- Ringkasan statistik cepat (Total Karyawan, Departemen, Kehadiran Hari Ini, Permohonan Cuti).
+- Visualisasi grafik interaktif menggunakan **Chart.js** untuk tren kehadiran dan distribusi departemen.
+
+---
+
+## 🛠️ Teknologi yang Digunakan (Tech Stack)
+
+* **Frontend & Backend Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+* **UI Library & Styling:** [Tailwind CSS v4](https://tailwindcss.com/), [Shadcn UI](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/), [Framer Motion](https://www.framer.com/motion/), & [Lucide Icons](https://lucide.dev/)
+* **Database & ORM:** [PostgreSQL](https://www.postgresql.org/), [Prisma ORM 7](https://www.prisma.io/), & [Kysely](https://kysely.dev/)
+* **Autentikasi & Keamanan:** [Better Auth](https://www.better-auth.com/) & [bcryptjs](https://github.com/dcodeIO/bcrypt.js)
+* **File Upload:** [UploadThing](https://uploadthing.com/)
+* **Grafik & Analitik:** [Chart.js](https://www.chartjs.org/) & `react-chartjs-2`
+* **Ekspor Data:** [XLSX (SheetJS)](https://sheetjs.com/)
+* **Form & Validasi:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+
+---
+
+## 📁 Struktur Direktori Proyek
+
+```text
+employee-management-system/
+├── app/                      # Next.js App Router (Halaman, API Routes, & Server Actions)
+│   ├── (auth)/               # Halaman Autentikasi (Login)
+│   ├── actions/              # Server Actions (Employees, Attendance, Leave, Payroll, etc.)
+│   ├── api/                  # API endpoints (Auth, UploadThing)
+│   └── dashboard/            # Halaman-halaman Dashboard Utama
+├── components/               # Komponen UI Reusable
+│   ├── announcements/        # Komponen Pengumuman
+│   ├── attendance/           # Komponen Presensi
+│   ├── departments/          # Komponen Departemen
+│   ├── employees/            # Komponen Karyawan
+│   ├── leaves/               # Komponen Cuti
+│   ├── payroll/              # Komponen Payroll & Slip Gaji
+│   ├── settings/             # Komponen Pengaturan Jam Kerja & Profil
+│   └── ui/                   # Komponen Base UI (Shadcn/Radix)
+├── lib/                      # Helper Utilities, Validasi Zod, Auth Config, Prisma Instance
+├── prisma/                   # Prisma Schema & Database Migrations / Seed script
+├── utils/                    # Utility Tambahan (Uploadthing Client)
+└── public/                   # Static Assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Cara Menjalankan Proyek (Getting Started)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Prasyarat (Prerequisites)
+Pastikan kamu telah menginstall:
+* [Node.js](https://nodejs.org/) (v18+ direkomendasikan)
+* [pnpm](https://pnpm.io/) / npm / yarn
+* Database [PostgreSQL](https://www.postgresql.org/)
 
-## Learn More
+### 2. Clone & Install Dependensi
+```bash
+git clone https://github.com/BayuWinataa/hris-system.git
+cd employee-management-system
+pnpm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Konfigurasi Environment Variable (`.env`)
+Buat file `.env` pada direktori utama proyek dan sesuaikan variabel konfigurasi berikut:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/hris_db?schema=public"
+BETTER_AUTH_SECRET="your-super-secret-key"
+BETTER_AUTH_URL="http://localhost:3000"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# UploadThing Credentials (untuk fitur upload foto profil)
+UPLOADTHING_TOKEN="your_uploadthing_token"
+```
 
-## Deploy on Vercel
+### 4. Setup Database & Migration
+Jalankan migrasi Prisma untuk membuat tabel-tabel di database:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npx prisma migrate dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*(Opsional)* Jalankan seeder data awal jika tersedia:
+```bash
+npx tsx prisma/seed.ts
+```
+
+### 5. Jalankan Server Development
+```bash
+pnpm dev
+```
+
+Buka peramban (browser) dan akses [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📝 Lisensi
+Proyek ini dibuat untuk keperluan pengelolaan internal dan pengembangan aplikasi HRIS.
