@@ -14,6 +14,10 @@ import { HRAnalyticsWidget } from "@/components/dashboard/hr-analytics-widget";
 
 import { AnimatedContainer } from "@/components/ui/animated-container";
 
+export const metadata = {
+    title: "Dashboard Utama",
+};
+
 export default async function DashboardPage() {
     const session = await auth.api.getSession({
         headers: await headers()

@@ -1,8 +1,21 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+
+export const metadata: Metadata = {
+    title: {
+        default: "Dashboard",
+        template: "%s | HRIS Neuform"
+    },
+    description: "Dashboard manajemen karyawan, presensi, cuti, dan penggajian HRIS.",
+    robots: {
+        index: false,
+        follow: false,
+    }
+};
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     const session = await auth.api.getSession({
